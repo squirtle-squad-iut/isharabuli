@@ -83,3 +83,22 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+# Flutter/Dart specific files
+*.lock
+.dart_tool/
+.flutter-plugins
+.packages
+.pub-cache/
+ios/Pods/
+android/.gradle/
+android/app/build/
+android/gradle/
+android/gradlew
+android/gradlew.bat
+android/local.properties
+android/captures/
+.vscode/
+.idea/
+.DS_Store
+*.jks
