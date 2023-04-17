@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:login_signup/utils/exports.dart';
 
+import '../home_page.dart';
+
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class SignupScreen extends StatefulWidget {
@@ -15,9 +17,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  late String _email;
   late String _password;
-  late String _confirmPassword;
   bool _value = false;
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,6 @@ class _SignupScreenState extends State<SignupScreen> {
                       },
                       controller: _emailController,
                       onSaved: (value) {
-                        _email = value!;
                       },
                     ),
                     const SizedBox(height: 20, width: 30),
@@ -85,7 +84,6 @@ class _SignupScreenState extends State<SignupScreen> {
                         return null;
                       },
                       onSaved: (value) {
-                        _confirmPassword = value!;
                       },
                     ),
                     const SizedBox(height: 20, width: 30),
@@ -152,7 +150,7 @@ Future<void> signUp(String email, String password, BuildContext context) async {
     // User has been successfully signed up
     // Navigate to the new page on successful signup
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => const LoginScreen()));
+        builder: (context) => const HomePage()));
   } on FirebaseAuthException catch (e) {
     if (e.code == 'weak-password') {
       print('The password provided is too weak.');

@@ -1,5 +1,7 @@
 import 'package:login_signup/utils/exports.dart';
 
+import '../home_page.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -66,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: SignUpContainer(st: "LogIn"),
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const WelcomeScreen()));
+                            builder: (context) => const HomePage()));
                       },
                     ),
                     const SizedBox(

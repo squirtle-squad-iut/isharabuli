@@ -9,6 +9,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
+  // runApp(const LoginScreen());
 }
 
 class MyApp extends StatelessWidget {
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
           duration: 5000,
           splashTransition: SplashTransition.fadeTransition,
           backgroundColor: Color.fromARGB(255, 53, 164, 219),
-          nextScreen: HomeScreen()),
+          nextScreen: SignupLoginScreen()),
     );
   }
 }
