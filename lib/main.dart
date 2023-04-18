@@ -1,5 +1,6 @@
+import 'package:IsharaBuli/utils/exports.dart';
+import 'package:IsharaBuli/views/landing_page.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:login_signup/utils/exports.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 

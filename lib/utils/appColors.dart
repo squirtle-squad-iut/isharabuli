@@ -1,4 +1,4 @@
-import 'package:login_signup/utils/exports.dart';
+import 'package:IsharaBuli/utils/exports.dart';
 
 class AppColors {
   static const kBlueColor = Color(0xFF3C82FF);

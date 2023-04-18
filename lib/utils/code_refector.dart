@@ -1,4 +1,4 @@
-import 'package:login_signup/utils/exports.dart';
+import 'package:IsharaBuli/utils/exports.dart';
 
 // custom text widget
 Widget customText({required String txt, required TextStyle style}) {
@@ -93,6 +93,39 @@ Widget CustomTextField({required String Lone, required String Htwo}) {
           color: AppColors.kDarkblack,
           style: BorderStyle.solid,
         ))),
+    autofocus: true,
+    keyboardType: TextInputType.multiline,
+  );
+}
+
+Widget CustomTextFieldPass({required String Lone, required String Htwo}) {
+  bool _obscureText = true;
+  return TextField(
+    obscureText: true,
+    decoration: InputDecoration(
+        suffixIcon: IconButton(
+          icon: Icon(
+            _obscureText ? Icons.visibility : Icons.visibility_off,
+            color: Colors.grey,
+          ),
+          onPressed: () {
+            // setState(() {
+              _obscureText = !_obscureText;
+            // });
+          },
+        ),
+        labelText: Lone,
+        hintText: Htwo,
+        hintStyle: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 17,
+        ),
+        border: const OutlineInputBorder(
+            borderSide: BorderSide(
+              width: 5,
+              color: AppColors.kDarkblack,
+              style: BorderStyle.solid,
+            ))),
     autofocus: true,
     keyboardType: TextInputType.multiline,
   );

@@ -1,15 +1,15 @@
 export 'package:flutter/material.dart';
 
 //Views
-export 'package:login_signup/views/landing_page.dart';
-export 'package:login_signup/views/login_signup/login_screen.dart';
-export 'package:login_signup/views/login_signup/signup_sreen.dart';
-export 'package:login_signup/views/welcome_Screen.dart';
+export 'package:IsharaBuli/views/landing_page.dart';
+export 'package:IsharaBuli/views/login_signup/login_screen.dart';
+export 'package:IsharaBuli/views/login_signup/signup_sreen.dart';
+export 'package:IsharaBuli/views/welcome_Screen.dart';
 
 //Controllers
 
 //Utils
-export 'package:login_signup/utils/code_refector.dart';
+export 'package:IsharaBuli/utils/code_refector.dart';
 export 'appColors.dart';
 
 //Models

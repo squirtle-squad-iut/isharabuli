@@ -1,4 +1,4 @@
-import 'package:login_signup/utils/exports.dart';
+import 'package:IsharaBuli/utils/exports.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);

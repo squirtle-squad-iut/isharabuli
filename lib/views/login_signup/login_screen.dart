@@ -1,6 +1,11 @@
-import 'package:login_signup/utils/exports.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:IsharaBuli/utils/exports.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../home_page.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+
+final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -11,6 +16,9 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _value = false;
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -29,10 +37,32 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 20),
                     const SizedBox(height: 20),
                     const SizedBox(width: 30),
-                    CustomTextField(Lone: "Email", Htwo: "Email"),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                          labelText: "Email", hintText: "Email"),
+                      keyboardType: TextInputType.emailAddress,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your email';
+                        }
+                        return null;
+                      },
+                      controller: _emailController,
+                    ),
                     const SizedBox(height: 20, width: 30),
 
-                    CustomTextField(Lone: "Password", Htwo: "Password"),
+                    TextFormField(
+                      obscureText: true,
+                      decoration: const InputDecoration(
+                          labelText: "Password", hintText: "Password"),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your password';
+                        }
+                        return null;
+                      },
+                      controller: _passwordController,
+                    ),
                     const SizedBox(height: 20, width: 30),
 
                     Row(
@@ -42,6 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           onChanged: (newValue) {
                             setState(() {
                               _value = newValue!;
+                              // storeUserCredentials(String email, String password)
                             });
                             const Text(
                               "Remember me",
@@ -67,8 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     InkWell(
                       child: SignUpContainer(st: "LogIn"),
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const HomePage()));
+                        signIn(_emailController.text, _passwordController.text, context);
                       },
                     ),
                     const SizedBox(
@@ -94,4 +124,44 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
+}
+
+Future<String?> signIn(String email, String password, context) async {
+  try {
+    UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    // User user = userCredential.user;
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => const HomePage()));
+    return 'success';
+  } on FirebaseAuthException catch (e) {
+    if (e.code == 'user-not-found') {
+      return 'No user found for that email.';
+    } else if (e.code == 'wrong-password') {
+      Fluttertoast.showToast(
+          msg: "Wrong password",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.grey[600],
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+
+      return 'Wrong password provided for that user.';
+    }
+    return e.message;
+  } catch (e) {
+    return e.toString();
+  }
+}
+
+
+
+void storeUserCredentials(String email, String password) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setString('email', email);
+  prefs.setString('password', password);
 }
