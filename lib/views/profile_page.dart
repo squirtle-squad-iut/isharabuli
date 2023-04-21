@@ -24,7 +24,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        title: Text('প্রোফাইল'),
       ),
       body: Center(
         child: Column(
@@ -38,7 +38,7 @@ class _ProfilePageState extends State<ProfilePage> {
             SizedBox(height: 100),
             Text(
               // _user.displayName!,
-              'Username',
+              'ব্যবহারকারীর নাম',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -56,7 +56,7 @@ class _ProfilePageState extends State<ProfilePage> {
               onPressed: () {
                 // navigate to edit profile page
               },
-              child: Text('Edit Profile'),
+              child: Text('প্রোফাইল সম্পাদনা করুন'),
             ),
             SizedBox(height: 16),
             ElevatedButton(
@@ -64,7 +64,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => SignupLoginScreen()));
               },
-              child: Text('Sign Out'),
+              child: Text('সাইন আউট'),
             ),
           ],
         ),

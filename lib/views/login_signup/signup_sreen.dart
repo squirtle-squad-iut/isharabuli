@@ -38,7 +38,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     // CustomTextField(Lone: "Email", Htwo: "Email"),
                     TextFormField(
                       decoration: const InputDecoration(
-                          labelText: "Email", hintText: "Email"),
+                          labelText: "ইমেইল", hintText: "ইমেইল"),
                       keyboardType: TextInputType.emailAddress,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -55,7 +55,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     TextFormField(
                       obscureText: true,
                       decoration: const InputDecoration(
-                          labelText: "Password", hintText: "Password"),
+                          labelText: "পাসওয়ার্ড", hintText: "পাসওয়ার্ড"),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter your password';
@@ -72,8 +72,8 @@ class _SignupScreenState extends State<SignupScreen> {
                     TextFormField(
                       obscureText: true,
                       decoration: const InputDecoration(
-                          labelText: "Confirm Password",
-                          hintText: "Confirm Password"),
+                          labelText: "পাসওয়ার্ড নিশ্চিত করুন",
+                          hintText: "পাসওয়ার্ড নিশ্চিত করুন"),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please confirm your password';
@@ -98,7 +98,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           },
                         ),
                         const Text(
-                          "Remember me",
+                          "আমাকে মনে রাখবেন",
                           style: TextStyle(
                             fontSize: 13,
                             color: AppColors.kBlackColor,
@@ -109,7 +109,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
                     const SizedBox(height: 40),
                     InkWell(
-                      child: SignUpContainer(st: "Sign Up"),
+                      child: SignUpContainer(st: "নিবন্ধন করুন"),
                       onTap: () {
                         signUp(_emailController.text, _passwordController.text, context);
                       },
@@ -120,7 +120,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     InkWell(
                       child: RichText(
                         text: RichTextSpan(
-                            one: "Already have an account ? ", two: "Login"),
+                            one: "অ্যাকাউন্ট আছে? ", two: "প্রবেশ করুন"),
                       ),
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(

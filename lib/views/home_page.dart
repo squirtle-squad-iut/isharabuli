@@ -2,8 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:IsharaBuli/utils/exports.dart';
 import 'package:IsharaBuli/views/profile_page.dart';
-
 import 'learning_page.dart';
+// import 'package:intl/intl.dart';
+// import 'package:IsharaBuli/messages/messages_bn.dart';
 
 // Get the current user's email
 String getCurrentUserEmail() {
@@ -22,7 +23,7 @@ class HomePage extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Ishara Buli"),
+        title: const Text("ইশারা বুলি"),
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
@@ -62,7 +63,7 @@ class HomePage extends StatelessWidget {
                     //   fit: BoxFit.contain, // or BoxFit.cover or any other fit
                     // ),
                     SizedBox(height: 0),
-                    Text('Learn', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                    Text('শিখুন', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
                   ],
                 )),
               ],
@@ -84,7 +85,7 @@ class HomePage extends StatelessWidget {
                     ),
 
                     // SizedBox(height: 0),
-                    Text('Test', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                    Text('অনুশীলন', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
                   ],
 
                 )),

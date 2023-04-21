@@ -3,6 +3,9 @@ import 'package:IsharaBuli/views/landing_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart';
+
 
 
 
@@ -19,10 +22,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'IsharaBuli',
+      title: 'ইশারা বুলি',
+      locale: const Locale('bn', 'BD'),
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+
+      ],
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      debugShowCheckedModeBanner: false, // to remode the debug badge
       home: AnimatedSplashScreen(
           splash: Image.asset('image/Black.png'),
           splashIconSize: 200,

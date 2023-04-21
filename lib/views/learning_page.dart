@@ -26,7 +26,7 @@ class LearningPage extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Ishara Buli"),
+        title: const Text("ইশারা বুলি"),
         automaticallyImplyLeading: false,
         actions: [
           IconButton(

@@ -31,7 +31,7 @@ class _SignupLoginScreenState extends State<SignupLoginScreen> {
                       height: 50,
                     ),
                     InkWell(
-                      child: SignUpContainer(st: "Sign Up"),
+                      child: SignUpContainer(st: "নিবন্ধন করুন"),
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => const SignupScreen()));
@@ -41,7 +41,7 @@ class _SignupLoginScreenState extends State<SignupLoginScreen> {
                       height: 50,
                     ),
                     InkWell(
-                      child: LoginContainer(st: "Log In"),
+                      child: LoginContainer(st: "প্রবেশ করুন"),
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => const LoginScreen()));

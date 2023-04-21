@@ -39,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(width: 30),
                     TextFormField(
                       decoration: const InputDecoration(
-                          labelText: "Email", hintText: "Email"),
+                          labelText: "ইমেইল", hintText: "ইমেইল"),
                       keyboardType: TextInputType.emailAddress,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     TextFormField(
                       obscureText: true,
                       decoration: const InputDecoration(
-                          labelText: "Password", hintText: "Password"),
+                          labelText: "পাসওয়ার্ড", hintText: "পাসওয়ার্ড"),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter your password';
@@ -74,18 +74,17 @@ class _LoginScreenState extends State<LoginScreen> {
                               _value = newValue!;
                               // storeUserCredentials(String email, String password)
                             });
-                            const Text(
-                              "Remember me",
-                              style: TextStyle(
-                                  fontSize: 13, color: AppColors.kBlackColor),
-                            );
                           },
                         ),
-                        Spacer(),
+                        const Text(
+                          "আমাকে মনে রাখবেন",
+                          style: TextStyle(fontSize: 13, color: AppColors.kBlackColor),
+                        ),
+                        const Spacer(),
                         const TextButton(
-                          onPressed: null,
+                          onPressed: null, //TODO: implement password reset here
                           child: Text(
-                            "Forgot password?",
+                            "পাসওয়ার্ড ভুলে গেছেন?",
                             style: TextStyle(
                               fontSize: 15,
                             ),
@@ -96,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     const SizedBox(height: 40),
                     InkWell(
-                      child: SignUpContainer(st: "LogIn"),
+                      child: SignUpContainer(st: "প্রবেশ করুন"),
                       onTap: () {
                         signIn(_emailController.text, _passwordController.text, context);
                       },
@@ -107,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     InkWell(
                       child: RichText(
                         text: RichTextSpan(
-                            one: "Don’t have an account ? ", two: "Sign Up"),
+                            one: "অ্যাকাউন্ট নেই? ", two: "নিবন্ধন করুন"),
                       ),
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
@@ -132,24 +131,17 @@ Future<String?> signIn(String email, String password, context) async {
       email: email,
       password: password,
     );
+    Fluttertoast.showToast(msg: 'সফল লগইন');
     // User user = userCredential.user;
     Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => const HomePage()));
     return 'success';
   } on FirebaseAuthException catch (e) {
     if (e.code == 'user-not-found') {
+      Fluttertoast.showToast(msg: 'সেই ইমেলের কোনো ব্যবহারকারী নেই');
       return 'No user found for that email.';
     } else if (e.code == 'wrong-password') {
-      Fluttertoast.showToast(
-          msg: "Wrong password",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.grey[600],
-          textColor: Colors.white,
-          fontSize: 16.0
-      );
-
+      Fluttertoast.showToast(msg: 'পাসওয়ার্ড ভুল');
       return 'Wrong password provided for that user.';
     }
     return e.message;
